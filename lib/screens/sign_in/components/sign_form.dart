@@ -4,6 +4,10 @@ import 'package:tripplestore/components/form_error.dart';
 import 'package:tripplestore/helper/keyboard.dart';
 import 'package:tripplestore/screens/forgot_password/forgot_password_screen.dart';
 import 'package:tripplestore/screens/login_success/login_success_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tripplestore/service/service.dart';
+
+
 
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
@@ -72,12 +76,27 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async{
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
+                var hasil = await Fireservice.signin(
+                  email, password);
                 KeyboardUtil.hideKeyboard(context);
+
+              if (hasil == "Signin Berhasil") {
                 Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+
+              } else {
+                Fluttertoast.showToast(
+                    msg: hasil,
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+              }
               }
             },
           ),

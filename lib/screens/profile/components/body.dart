@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tripplestore/screens/sign_in/sign_in_screen.dart';
+import 'package:tripplestore/service/service.dart';
+
+
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -35,7 +39,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () {
+              Fireservice.signout();
+               Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false);           },
           ),
         ],
       ),

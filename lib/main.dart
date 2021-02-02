@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tripplestore/routes.dart';
 import 'package:tripplestore/screens/profile/profile_screen.dart';
 import 'package:tripplestore/screens/splash/splash_screen.dart';
 import 'package:tripplestore/theme.dart';
 
-void main() {
+void main() async{
+WidgetsFlutterBinding.ensureInitialized();   
+await Firebase.initializeApp();
   runApp(MyApp());
 }
 
