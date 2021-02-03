@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ],
           child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'TrippleStore',
         theme: theme(),
         // home: SplashScreen(),
         // We use routeName so that we dont need to remember the name

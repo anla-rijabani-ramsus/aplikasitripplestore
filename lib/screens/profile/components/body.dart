@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tripplestore/screens/help/help_screen.dart';
 import 'package:tripplestore/screens/myaccount/account_screen.dart';
+import 'package:tripplestore/screens/notification/notification_screen.dart';
+import 'package:tripplestore/screens/setting/setting_screen.dart';
 import 'package:tripplestore/screens/sign_in/sign_in_screen.dart';
 import 'package:tripplestore/service/service.dart';
 
@@ -29,12 +31,18 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Notifications",
             icon: "assets/icons/Bell.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, NotificationScreen.routeName);
+
+            },
           ),
           ProfileMenu(
             text: "Settings",
             icon: "assets/icons/Settings.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, SettingScreen.routeName);
+
+            },
           ),
           ProfileMenu(
             text: "Help Center",

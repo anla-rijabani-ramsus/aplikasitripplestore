@@ -29,7 +29,7 @@ class Body extends StatelessWidget {
               SizedBox(height: 20),
               AccountMenu(
                 text: snapshot.data.data()["nama"],
-                icon: "assets/icons/iconmonstr-home-7.svg",
+                icon: "assets/icons/iconmonstr-id-card-1.svg",
                 press: null,
               ),
               AccountMenu(
@@ -44,7 +44,7 @@ class Body extends StatelessWidget {
               ),
               AccountMenu(
                 text: snapshot.data.data()["address"],
-                icon: "assets/icons/iconmonstr-key-thin.svg",
+                icon: "assets/icons/iconmonstr-home-7.svg",
                 press: null,
               ),
               

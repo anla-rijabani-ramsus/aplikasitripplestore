@@ -9,8 +9,10 @@ import 'package:tripplestore/screens/help/help_screen.dart';
 import 'package:tripplestore/screens/home/home_screen.dart';
 import 'package:tripplestore/screens/login_success/login_success_screen.dart';
 import 'package:tripplestore/screens/myaccount/account_screen.dart';
+import 'package:tripplestore/screens/notification/notification_screen.dart';
 import 'package:tripplestore/screens/otp/otp_screen.dart';
 import 'package:tripplestore/screens/profile/profile_screen.dart';
+import 'package:tripplestore/screens/setting/setting_screen.dart';
 import 'package:tripplestore/screens/sign_in/sign_in_screen.dart';
 import 'package:tripplestore/screens/splash/splash_screen.dart';
 
@@ -19,6 +21,8 @@ import 'screens/sign_up/sign_up_screen.dart';
 // We use name route
 // All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
+  SettingScreen.routeName: (context) => SettingScreen(),
+  NotificationScreen.routeName: (context) => NotificationScreen(),
   HelpScreen.routeName: (context) => HelpScreen(),
   ChatScreen.routeName: (context) => ChatScreen(),
   FavoriteScreen.routeName: (context) => FavoriteScreen(),
