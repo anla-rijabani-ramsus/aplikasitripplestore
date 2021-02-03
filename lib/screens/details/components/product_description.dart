@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:tripplestore/models/Product.dart';
+import 'package:tripplestore/service/service.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -17,6 +21,8 @@ class ProductDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,22 +36,35 @@ class ProductDescription extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.centerRight,
-          child: Container(
-            padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-            width: getProportionateScreenWidth(64),
-            decoration: BoxDecoration(
-              color:
-                  product.isFavourite ? Color(0xFFFFE6E6) : Color(0xFFF5F6F9),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
+          child: GestureDetector(
+            onTap: ()async{
+              await Fireservice.addfavorite(id:user.uid,product: product);
+                      Fluttertoast.showToast(
+                    msg: "berhasil ditambahkan favorite",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+            },
+                      child: Container(
+              padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+              width: getProportionateScreenWidth(64),
+              decoration: BoxDecoration(
+                color:
+                    product.isFavourite ? Color(0xFFFFE6E6) : Color(0xFFF5F6F9),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                ),
               ),
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/Heart Icon_2.svg",
-              color:
-                  product.isFavourite ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
-              height: getProportionateScreenWidth(16),
+              child: SvgPicture.asset(
+                "assets/icons/Heart Icon_2.svg",
+                color:
+                    product.isFavourite ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
+                height: getProportionateScreenWidth(16),
+              ),
             ),
           ),
         ),

@@ -6,11 +6,12 @@ class CompleteProfileScreen extends StatelessWidget {
   static String routeName = "/complete_profile";
   @override
   Widget build(BuildContext context) {
+    var emailpass=ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign Up'),
       ),
-      body: Body(),
+      body: Body(emailpass),
     );
   }
 }

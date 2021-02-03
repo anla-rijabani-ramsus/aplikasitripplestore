@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tripplestore/components/custom_surfix_icon.dart';
 import 'package:tripplestore/components/default_button.dart';
 import 'package:tripplestore/components/form_error.dart';
 import 'package:tripplestore/screens/otp/otp_screen.dart';
+import 'package:tripplestore/screens/sign_in/sign_in_screen.dart';
+import 'package:tripplestore/service/service.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
+  final emailpass;
+
+  const CompleteProfileForm(this.emailpass);
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
@@ -51,9 +57,31 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
-                Navigator.pushNamed(context, OtpScreen.routeName);
+                _formKey.currentState.save();
+
+                var hasil = await Fireservice.signup(
+                  nama: "$firstName $lastName",
+                  address: address,
+                  phoneNumber: phoneNumber,
+                  email: widget.emailpass["email"],
+                  password: widget.emailpass["password"],
+                );
+                Fluttertoast.showToast(
+                    msg: hasil,
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                Future.delayed(
+                    Duration(
+                      seconds: 2,
+                    ), () {
+                  Navigator.pushNamed(context, SignInScreen.routeName);
+                });
               }
             },
           ),

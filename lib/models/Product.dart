@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Product {
   final int id;
   final String title, description;
-  final List<String> images;
-  final List<Color> colors;
+  final List<dynamic> images;
+  final List<dynamic> colors;
   final double rating, price;
   final bool isFavourite, isPopular;
 
@@ -42,7 +42,7 @@ List<Product> demoProducts = [
     price: 64.99,
     description: description,
     rating: 4.8,
-    isFavourite: true,
+    isFavourite: false,
     isPopular: true,
   ),
   Product(
@@ -60,6 +60,7 @@ List<Product> demoProducts = [
     price: 50.5,
     description: description,
     rating: 4.1,
+    isFavourite: false,
     isPopular: true,
   ),
   Product(
@@ -77,7 +78,7 @@ List<Product> demoProducts = [
     price: 36.55,
     description: description,
     rating: 4.1,
-    isFavourite: true,
+    isFavourite: false,
     isPopular: true,
   ),
   Product(
@@ -95,7 +96,7 @@ List<Product> demoProducts = [
     price: 20.20,
     description: description,
     rating: 4.1,
-    isFavourite: true,
+    isFavourite: false,
   ),
 ];
 

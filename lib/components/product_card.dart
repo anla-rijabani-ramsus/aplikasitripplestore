@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:tripplestore/models/Product.dart';
 import 'package:tripplestore/screens/details/details_screen.dart';
+import 'package:tripplestore/service/service.dart';
 
 import '../constants.dart';
 import '../size_config.dart';
@@ -63,9 +67,10 @@ class ProductCard extends StatelessWidget {
                       color: kPrimaryColor,
                     ),
                   ),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
+                  GestureDetector(
+                    onTap: () {
+                  
+                    },
                     child: Container(
                       padding: EdgeInsets.all(getProportionateScreenWidth(8)),
                       height: getProportionateScreenWidth(28),

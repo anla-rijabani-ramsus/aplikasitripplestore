@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tripplestore/components/default_button.dart';
 import 'package:tripplestore/size_config.dart';
+import 'package:tripplestore/screens/sign_in/sign_in_screen.dart';
+import 'package:tripplestore/service/service.dart';
 
 import '../../../constants.dart';
 
@@ -109,7 +111,9 @@ class _OtpFormState extends State<OtpForm> {
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {Fireservice.signout();
+               Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false); 
+            },
           )
         ],
       ),

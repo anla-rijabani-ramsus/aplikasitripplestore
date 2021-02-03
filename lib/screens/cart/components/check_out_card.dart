@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tripplestore/components/default_button.dart';
 
 import '../../../constants.dart';
@@ -78,7 +79,22 @@ class CheckoutCard extends StatelessWidget {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Check Out",
-                    press: () {},
+                    press: () async {
+                      Fluttertoast.showToast(
+                          msg: "chech out berhasil",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      Future.delayed(
+                          Duration(
+                            seconds: 2,
+                          ), () {
+                        Navigator.pop(context);
+                      });
+                    },
                   ),
                 ),
               ],

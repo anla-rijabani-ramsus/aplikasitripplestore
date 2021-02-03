@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tripplestore/screens/help/help_screen.dart';
+import 'package:tripplestore/screens/myaccount/account_screen.dart';
 import 'package:tripplestore/screens/sign_in/sign_in_screen.dart';
 import 'package:tripplestore/service/service.dart';
 
@@ -19,7 +21,10 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
+            press: ()  {
+                Navigator.pushNamed(context, AccountScreen.routeName);
+
+            },
           ),
           ProfileMenu(
             text: "Notifications",
@@ -34,7 +39,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Help Center",
             icon: "assets/icons/Question mark.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, HelpScreen.routeName);
+            },
           ),
           ProfileMenu(
             text: "Log Out",
